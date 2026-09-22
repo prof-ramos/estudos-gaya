@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import fs from 'fs/promises';
 import svgr from '@svgr/rollup';
 
 import { fileURLToPath } from 'url';
@@ -16,25 +15,6 @@ export default defineConfig({
         alias: {
             src: resolve(__dirname, 'src'),
             '@': resolve(__dirname, 'src'),
-        },
-    },
-    optimizeDeps: {
-        esbuildOptions: {
-            plugins: [
-                {
-                    name: 'load-js-files-as-tsx',
-                    // Tipado por contexto como `esbuild.PluginBuild` (via `Plugin[]`).
-                    setup(build) {
-                        build.onLoad(
-                            { filter: /src\\.*\.js$/ },
-                            async (args) => ({
-                                loader: 'tsx',
-                                contents: await fs.readFile(args.path, 'utf8'),
-                            })
-                        );
-                    },
-                },
-            ],
         },
     },
 
