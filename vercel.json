@@ -4,6 +4,8 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
+    { "source": "/api/topic", "destination": "/api/state" },
+    { "source": "/api/session", "destination": "/api/state" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
