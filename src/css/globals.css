@@ -344,3 +344,38 @@ html[data-card-shadow="false"] [data-slot="card"] {
 
 
 }
+
+/* Robustez de layout em telas estreitas */
+html,
+body,
+#root {
+  max-width: 100%;
+  min-width: 0;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+table {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  [data-slot="sidebar-wrapper"],
+  [data-slot="sidebar-inset"] {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  [data-slot="sidebar-inset"] {
+    width: 100%;
+  }
+}
